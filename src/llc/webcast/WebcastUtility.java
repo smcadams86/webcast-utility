@@ -38,10 +38,6 @@ public class WebcastUtility {
 	
 	private StreamProperties streamProperties;
 	
-	private JTextField ministerNameTextField;
-	private JTextField bibleVerseTextField;
-	private JTextField serviceTimeTextField;
-	
 	private JButton startStreamButton;
 	private JButton stopStreamButton;
 	private JLabel broadcastStatusLabel = new JLabel("NOT BROADCASTING");
@@ -118,8 +114,7 @@ public class WebcastUtility {
 	public Component createComponents() {
 		
 		
-		JPanel pane = new JPanel(new GridLayout(2,1));
-		pane.add(createMetaDataPanel());
+		JPanel pane = new JPanel(new GridLayout(1,1));
 		pane.add(createBroadcastPanel());
 		
 		pane.setBorder(BorderFactory.createEmptyBorder(30, // top
@@ -143,10 +138,6 @@ public class WebcastUtility {
 				stopStreamButton.setEnabled(true);
 				try {
 					log.info("Starting Broadcast...");
-					
-					streamProperties.setBibleVerses(bibleVerseTextField.getText());
-					streamProperties.setMinisterName(ministerNameTextField.getText());
-					streamProperties.setBibleVerses(serviceTimeTextField.getText());
 					
 					broadcaster.start();
 					broadcastStatusLabel.setText("BROADCASTING");
@@ -185,26 +176,6 @@ public class WebcastUtility {
 		pane.add(stopStreamButton);
 		
 		return pane;
-	}
-
-	private Component createMetaDataPanel() {
-		JPanel metaDataPanel = new JPanel(new GridLayout(3,2));
-		metaDataPanel.setBorder(BorderFactory.createTitledBorder("Meta Data"));
-		
-		ministerNameTextField = new JTextField();
-		bibleVerseTextField = new JTextField();
-		serviceTimeTextField = new JTextField();
-		
-		metaDataPanel.add(new JLabel("Minister Name"));
-		metaDataPanel.add(ministerNameTextField);
-		
-		metaDataPanel.add(new JLabel("Bible Verses"));
-		metaDataPanel.add(bibleVerseTextField);
-		
-		metaDataPanel.add(new JLabel("Service Time"));
-		metaDataPanel.add(serviceTimeTextField);
-		
-		return metaDataPanel;
 	}
 
 	private void createAndShowGUI() {

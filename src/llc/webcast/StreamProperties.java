@@ -9,11 +9,6 @@ public class StreamProperties {
 	private String ffmpegLocation;
 	private String ffmpegCommand;
 	
-	// meta data
-	private String ministerName;
-	private String bibleVerses;
-	private String serviceTime;
-
 	public StreamProperties(String propsFileLocation) {
 		Properties prop = new Properties();
 		try {
@@ -24,30 +19,6 @@ public class StreamProperties {
 			ex.printStackTrace();
 			System.exit(0);
 		}
-	}
-
-	public String getMinisterName() {
-		return ministerName;
-	}
-
-	public void setMinisterName(String ministerName) {
-		this.ministerName = ministerName;
-	}
-
-	public String getBibleVerses() {
-		return bibleVerses;
-	}
-
-	public void setBibleVerses(String bibleVerses) {
-		this.bibleVerses = bibleVerses;
-	}
-
-	public String getServiceTime() {
-		return serviceTime;
-	}
-
-	public void setServiceTime(String serviceTime) {
-		this.serviceTime = serviceTime;
 	}
 
 	public String getFfmpegLocation() {

@@ -30,9 +30,6 @@ public class StreamBroadcaster {
 	}
 
 	public void start() throws ExecuteException, IOException, InterruptedException {
-		
-		
-		
 		resultHandler.setRunning(true);
 		executor.execute(cmdLine, resultHandler);
 	}
