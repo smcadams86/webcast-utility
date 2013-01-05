@@ -26,3 +26,9 @@ ffmpeg_command=-re -i "C:/test.mp3" -g 60 -strict experimental -acodec aac -ab 4
 
 ```
 
+Building
+==========
+``` java
+mvn assembly:single
+```
+
