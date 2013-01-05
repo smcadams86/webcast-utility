@@ -16,9 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.metal.DefaultMetalTheme;
@@ -32,7 +31,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 
-public class WebcastUtility {
+public class WebcastUtility implements ActionListener {
 
 	private final static Logger log = Logger.getLogger(WebcastUtility.class.getName());
 	
@@ -60,6 +59,25 @@ public class WebcastUtility {
 		parseCommandLine(args);
 		createAndShowGUI();
 		broadcaster = new StreamBroadcaster(streamProperties);
+
+		Timer timer = new Timer(1000, this);
+		timer.setInitialDelay(1000);
+		timer.start();
+	}
+
+	public void actionPerformed(ActionEvent arg0) {
+		if (broadcaster.isRunning()) {
+			startStreamButton.setEnabled(false);
+			stopStreamButton.setEnabled(true);
+			broadcastStatusLabel.setText("BROADCASTING");
+			broadcastStatusLabel.setBackground(Color.GREEN);
+		}
+		else {
+			startStreamButton.setEnabled(true);
+			stopStreamButton.setEnabled(false);
+			broadcastStatusLabel.setText("NOT BROADCASTING");
+			broadcastStatusLabel.setBackground(Color.RED);
+		}
 	}
 	
 	private void initLookAndFeel() {
