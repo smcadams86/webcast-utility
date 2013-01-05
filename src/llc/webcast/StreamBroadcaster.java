@@ -16,10 +16,8 @@ public class StreamBroadcaster {
 	private CommandLine cmdLine;
 	private Executor executor;
 	private StreamResultHandler resultHandler;
-	private StreamProperties streamProperties;
 	
 	public StreamBroadcaster(StreamProperties streamProperties) {
-		this.streamProperties = streamProperties;
 		cmdLine = CommandLine.parse(streamProperties.getFullFfmpegCommand());
 		
 		watchdog = new ExecuteWatchdog(MAX_STREAM_TIME);
